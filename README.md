@@ -43,36 +43,24 @@ The bundle configures a `MockClock` service when `ENABLE_TIME_WARP` is set, and 
 
 ### ClockProvider Functions
 
-Der `ClockProvider` bietet folgende Funktionen:
-
 #### `modify(string $dateString): bool`
-Setzt ein neues Datum in der Session. Das Datum muss im Format `YYYY-MM-DD` vorliegen.
-Gibt `true` zurück, wenn das Datum erfolgreich gesetzt wurde, ansonsten `false`.
+Sets a new date in the session. The date must be in the format `YYYY-MM-DD`.
 
 #### `modifyOnRequestEvent(): bool`
-Ändert das Datum basierend auf dem Session-Wert oder Query-Parameter bei Anfragen.
-Gibt `true` zurück, wenn das Datum erfolgreich geändert wurde, ansonsten `false`.
+Changes the date based on the session value or query parameter for requests.
 
 #### `reset(): bool`
-Entfernt das gesetzte Datum aus der Session und setzt die Zeit zurück auf die aktuelle Zeit.
-Gibt `true` zurück, wenn das Datum zurückgesetzt wurde, ansonsten `false`.
+Removes the set date from the session and sets the time back to the current time.
 
 #### `canModifyTime(): bool`
-Prüft, ob die Zeit angepasst werden kann (wenn `MockClock` verwendet wird).
-Gibt `true` zurück, wenn die Zeit angepasst werden kann, ansonsten `false`.
+Checks whether the time can be adjusted (if 'MockClock' is used).
 
 #### `getSessionDate(): ?string`
-Holt das aktuelle Datum aus der Session, falls vorhanden.
-Gibt das Datum als String im Format `YYYY-MM-DD` zurück oder `null`, wenn kein Datum gesetzt ist.
+Retrieves the current date from the session, if available.
+Returns the date as a string in the format `YYYY-MM-DD` or `null` if no date is set.
 
 #### `now(): DateTimeImmutable`
-Gibt die aktuelle Zeit zurück, abhängig von der konfigurierten Clock.
-
-#### `sleep(float|int $seconds): void`
-Wartet die angegebene Anzahl von Sekunden.
-
-#### `withTimeZone(DateTimeZone|string $timezone): static`
-Gibt eine neue Clock-Instanz mit der angegebenen Zeitzone zurück.
+Returns the current time, depending on the configured clock.
 
 ## License
 

@@ -5,38 +5,38 @@ namespace IWF\ClockProviderBundle\Service;
 interface ClockProviderInterface
 {
     /**
-     * Setzt ein neues Datum in der Session
+     * Sets a new date in the session
      *
-     * @param string $dateString Datum im Format YYYY-MM-DD
-     * @return bool True wenn erfolgreich, False wenn nicht
+     * @param string $dateString Date im format YYYY-MM-DD
+     * @return bool
      */
     public function modify(string $dateString): bool;
 
     /**
-     * Setzt das Datum basierend auf Anfrage-Event
+     * Sets the date based on request event
      *
-     * @return bool True wenn erfolgreich, False wenn nicht
+     * @return bool
      */
     public function modifyOnRequestEvent(): bool;
 
     /**
-     * Entfernt das Datum aus der Session
+     * Removes the date from the session
      *
-     * @return bool True wenn erfolgreich, False wenn nicht
+     * @return bool
      */
     public function reset(): bool;
 
     /**
-     * Prüft, ob die Zeit angepasst werden kann
+     * Checks whether the time can be adjusted
      *
-     * @return bool True wenn die Zeit angepasst werden kann
+     * @return bool
      */
     public function canModifyTime(): bool;
 
     /**
-     * Holt das aktuelle Datum aus der Session (falls vorhanden)
+     * Retrieves the current date from the session (if available)
      *
-     * @return string|null Datum im Format YYYY-MM-DD oder null
+     * @return string|null Date in format YYYY-MM-DD oder null
      */
     public function getSessionDate(): ?string;
 }

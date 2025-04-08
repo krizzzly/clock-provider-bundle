@@ -3,9 +3,7 @@
 namespace IWF\ClockProviderBundle\Service;
 
 use DateTimeImmutable;
-use DateTimeZone;
 use Symfony\Component\Clock\ClockInterface;
-use Symfony\Component\Clock\DatePoint;
 use Symfony\Component\Clock\MockClock;
 use Symfony\Component\HttpFoundation\Exception\SessionNotFoundException;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -30,9 +28,6 @@ class ClockProvider implements ClockProviderInterface
         $this->requestStack = $requestStack;
     }
 
-    /**
-     * Setzt ein neues Datum in der Session
-     */
     public function modify(string $dateString): bool
     {
         if (!$this->canModifyTime()) {
@@ -82,9 +77,6 @@ class ClockProvider implements ClockProviderInterface
         }
     }
 
-    /**
-     * Entfernt das Datum aus der Session
-     */
     public function reset(): bool
     {
         $session = $this->requestStack->getSession();
@@ -104,17 +96,11 @@ class ClockProvider implements ClockProviderInterface
         return false;
     }
 
-    /**
-     * Prüft, ob die Zeit angepasst werden kann
-     */
     public function canModifyTime(): bool
     {
         return $this->clock instanceof MockClock;
     }
 
-    /**
-     * Holt das aktuelle Datum aus der Session (falls vorhanden)
-     */
     public function getSessionDate(): ?string
     {
         $session = $this->requestStack->getSession();
@@ -126,18 +112,7 @@ class ClockProvider implements ClockProviderInterface
         return null;
     }
 
-    /**
-     * Gibt die aktuelle Zeit zurück
-     */
     public function now(): DateTimeImmutable {
-        return $this->clock->now();
-    }
-
-    public function sleep(float|int $seconds): void {
-        $this->clock->sleep($seconds);
-    }
-
-    public function withTimeZone(\DateTimeZone|string $timezone): static {
-        $this->clock->withTimeZone($timezone);
+        return $this->now();
     }
 }
