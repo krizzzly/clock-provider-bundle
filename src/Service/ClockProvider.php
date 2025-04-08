@@ -84,7 +84,7 @@ class ClockProvider implements ClockProviderInterface
         if ($session->has($this->sessionKey)) {
             $session->remove($this->sessionKey);
 
-            // Zurück auf aktuelle Zeit setzen
+            // back to actual time
             if ($this->clock instanceof MockClock) {
                 $now = new \DateTimeImmutable();
                 $this->clock->modify($now->format('Y-m-d H:i:s'));
@@ -113,6 +113,6 @@ class ClockProvider implements ClockProviderInterface
     }
 
     public function now(): DateTimeImmutable {
-        return $this->now();
+        return clone $this->clock->now();
     }
 }
