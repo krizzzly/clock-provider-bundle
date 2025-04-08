@@ -1,0 +1,11 @@
+# This file is only loaded when ENABLE_TIME_WARP is true
+services:
+  # Override Clock service with MockClock when time warp is enabled
+  Symfony\Component\Clock\ClockInterface:
+    class: Symfony\Component\Clock\MockClock
+
+  Symfony\Component\Clock\Clock:
+    class: Symfony\Component\Clock\MockClock
+
+  Symfony\Component\Clock\MockClock:
+    alias: Symfony\Component\Clock\ClockInterface

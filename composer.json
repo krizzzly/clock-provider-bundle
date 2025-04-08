@@ -1,0 +1,23 @@
+{
+  "name": "iwf-web/clock-provider-bundle",
+  "type": "symfony-bundle",
+  "description": "ideas for a bundle to cope with time",
+  "keywords": ["php", "symfony", "tutorial"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christian Hiller",
+      "email": "c.hiller@iwf.ch"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "IWF\\ClockProviderBundle\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.0",
+    "symfony/framework-bundle": "^6.2|^7.0",
+    "symfony/clock": "^6.2|^7.0"
+  }
+}

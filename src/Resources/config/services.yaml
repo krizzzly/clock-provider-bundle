@@ -1,0 +1,17 @@
+services:
+  iwf.clock_provider:
+    class: IWF\ClockProviderBundle\Service\ClockProvider
+    autowire: true
+    arguments:
+      $clock: '@Symfony\Component\Clock\ClockInterface'
+      $sessionKey: '%iwf.clock_provider.session_key%'
+      $queryParam: '%iwf.clock_provider.query_param%'
+
+  IWF\ClockProviderBundle\Service\ClockProvider: "@iwf.clock_provider"
+
+  iwf.clock_provider.configuration_listener:
+    class: IWF\ClockProviderBundle\EventListener\ClockConfigurationListener
+    arguments: [ "@iwf.clock_provider" ]
+    autowire: true
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
